@@ -9,11 +9,11 @@ ssh tony@stapp01
 ## Create new user
 
 ```bash
-useradd -u 1128 anita
+useradd rajesh
 ```
 
 ## Move the home directory
 
 ```bash
-usermod -d /var/www/anita -m anita
+usermod -aG <group_name> rajesh
 ```
