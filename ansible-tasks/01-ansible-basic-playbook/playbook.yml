@@ -1,0 +1,8 @@
+- name: Create file in appserver
+  hosts: stapp03
+  become: yes
+  tasks:
+    - name: Create the file
+      file:
+        path: /tmp/file.txt
+        state: touch
