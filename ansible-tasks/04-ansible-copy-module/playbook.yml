@@ -1,0 +1,9 @@
+- name: Ansible copy
+  host: all
+  become: yes
+
+  tasks:
+  - name: Copy file with owner and permissions
+    ansible.builtin.copy:
+      src: /usr/src/devops/index.html
+      dest: /opt/devops
