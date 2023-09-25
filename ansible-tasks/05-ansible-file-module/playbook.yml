@@ -1,0 +1,12 @@
+- name: Ansible file
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Create file with ownership, group and permissions
+    ansible.builtin.file:
+      path: /home/webdata.txt
+      state: touch
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      mode: "0744"
