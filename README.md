@@ -8,3 +8,5 @@ Project Nautilus is the Naval subdivision of the xFusionCorp Industries. Nautilu
 
 ## Infrastructure Diagram
 ![image](./images/Kodekloud-engineer.png)
+
+kubectl --kubeconfig=/<pathtodirectory>/k8s-1-28-2-do-0-lon1-1695901093776-kubeconfig.yaml get nodes
