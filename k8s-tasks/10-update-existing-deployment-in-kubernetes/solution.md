@@ -52,3 +52,11 @@ kubectl get deployments
 kubectl get svc
 kubectl get pods
 ```
+
+
+## Alternatively
+
+```bash
+kubectl edit deployment nginx-deployment
+kubectl edit svc nginx-service
+```
