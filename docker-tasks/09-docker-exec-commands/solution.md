@@ -27,9 +27,9 @@ apt install apache2 -y
 ## edit the ports
 
 ```bash
-sed -i 's/Listen 80/Listen 3004/g' /etc/apache2/ports.conf
+sed -i 's/Listen 80/Listen 8089/g' /etc/apache2/ports.conf
 
-sed -i 's/:80/:3004/g' /etc/apache2/apache2.conf
+sed -i 's/:80/:8089/g' /etc/apache2/apache2.conf
 
 sed -i 's/#ServerName www.example.com/ServerName localhost/g' /etc/apache2/apache2.conf
 ```
