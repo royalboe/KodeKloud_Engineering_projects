@@ -8,8 +8,8 @@ RUN sed -i '/LoadModule\ socache_shmcb_module modules\/mod_socache_shmcb.so/s/^#
 
 RUN sed -i '/Include\ conf\/extra\/httpd-ssl.conf/s/^#//g' conf/httpd.conf
 
-COPY certs/server.crt /usr/local/apache2/conf/server.crt
+RUN cp certs/server.crt /usr/local/apache2/conf/server.crt
 
-COPY certs/server.key /usr/local/apache2/conf/server.key
+RUN cp certs/server.key /usr/local/apache2/conf/server.key
 
-COPY html/index.html /usr/local/apache2/htdocs/
+RUN cp html/index.html /usr/local/apache2/htdocs/
