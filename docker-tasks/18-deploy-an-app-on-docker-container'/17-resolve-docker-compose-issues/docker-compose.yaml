@@ -1,0 +1,22 @@
+version: '3'
+services:
+    web:
+        image: php:7.2-apache
+        container_name: php_web
+        ports:
+            - "6000:80"
+        volumes:
+            - /var/www/html:/var/www/html
+
+    DB:
+        image: mariadb:latest
+        container_name: mysql_web
+        ports:
+            - "3306:3306"
+        volumes:
+            - /var/lib/mysql:/var/lib/mysql
+        environment:
+            - MYSQL_DATABASE=database_web
+            - MYSQL_USER=ayomide
+            - MYSQL_PASSWORD=P@ssW0Rd234
+
