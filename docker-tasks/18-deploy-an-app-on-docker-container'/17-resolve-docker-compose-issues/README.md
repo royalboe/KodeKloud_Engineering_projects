@@ -13,31 +13,31 @@ The compose should deploy two services (web and DB), and each service should dep
 
 For web service:
 
-a. Container name must be php_web.
+a. Container name must be php_blog.
 
 
 b. Use image php with any apache tag. Check here for more details.
 
 
-c. Map php_web container's port 80 with host port 6000
+c. Map php_blog container's port 80 with host port 6100
 
 
-d. Map php_web container's /var/www/html volume with host volume /var/www/html.
+d. Map php_blog container's /var/www/html volume with host volume /var/www/html.
 
 
 For DB service:
 
 
-a. Container name must be mysql_web.
+a. Container name must be mysql_blog.
 
 
 b. Use image mariadb with any tag (preferably latest). Check here for more details.
 
 
-c. Map mysql_web container's port 3306 with host port 3306
+c. Map mysql_blog container's port 3306 with host port 3306
 
 
-d. Map mysql_web container's /var/lib/mysql volume with host volume /var/lib/mysql.
+d. Map mysql_blog container's /var/lib/mysql volume with host volume /var/lib/mysql.
 
 
 e. Set MYSQL_DATABASE=database_web and use any custom user ( except root ) with some complex password for DB connections.

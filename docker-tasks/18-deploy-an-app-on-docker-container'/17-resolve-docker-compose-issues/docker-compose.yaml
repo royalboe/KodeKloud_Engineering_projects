@@ -1,22 +1,23 @@
 version: '3'
 services:
-    web:
+    php_blog:
         image: php:7.2-apache
-        container_name: php_web
+        container_name: php_blog
         ports:
-            - "6000:80"
+            - "6100:80"
         volumes:
             - /var/www/html:/var/www/html
 
-    DB:
+    mysql_blog:
         image: mariadb:latest
-        container_name: mysql_web
+        restart: always
+        container_name: mysql_blog
         ports:
             - "3306:3306"
         volumes:
             - /var/lib/mysql:/var/lib/mysql
         environment:
-            - MYSQL_DATABASE=database_web
-            - MYSQL_USER=ayomide
-            - MYSQL_PASSWORD=P@ssW0Rd234
-
+            MARIADB_DATABASE: database_blog
+            MARIADB_USER: ayomide
+            MARIADB_PASSWORD: P@ssW0Rd234
+            MARIADB_ROOT_PASSWORD: admin
