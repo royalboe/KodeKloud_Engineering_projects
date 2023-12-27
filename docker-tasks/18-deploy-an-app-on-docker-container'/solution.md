@@ -12,10 +12,10 @@ ssh tony@stapp01
 cd /opt/docker
 ```
 
-## Copy the content of [docker-compose](./docker-compose.yaml) into the Dockerfile
+## Copy the content of [docker-compose](./docker-compose.yaml) into the docker-compose.yml
 
 ```bash
-vi docker-compose.yaml
+vi docker-compose.yml
 ```
 
 ## Check for images and build in the current context

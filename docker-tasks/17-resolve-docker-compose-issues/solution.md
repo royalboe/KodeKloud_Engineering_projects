@@ -18,10 +18,10 @@ cd /opt/docker
 sudo docker-compose up -d
 ```
 
-## Copy the content of [docker-compose](./docker-compose.yaml) into the Dockerfile
+## Copy the content of [docker-compose](./docker-compose.yaml) into the docker-compose.yml file
 
 ```bash
-vi docker-compose.yaml
+vi docker-compose.yml
 ```
 
 ## Run docker compose
