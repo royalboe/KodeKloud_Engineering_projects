@@ -1,19 +1,46 @@
 apiVersion: v1
-kind: Pod
+kind: Namespace
 metadata:
-  name: print-envars-greeting
-  labels:
-    name: print-envars-greeting
+  name: nautilus
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-deploy
+  namespace: nautilus
 spec:
-  restartPolicy: Never
-  containers:
-  - name: print-env-container
-    image: bash:latest
-    command: ["/bin/sh", "-c", 'echo "$(GREETING) $(COMPANY) $(GROUP)"']
-    env:
-      - name: GREETING
-        value: "Welcome to"
-      - name: COMPANY
-        value: "xFusionCorp"
-      - name: GROUP
-        value: "Datacenter"
+  replicas: 3
+  selector:
+    matchLabels:
+      app: httpd
+  template:
+    metadata:
+      labels:
+        app: httpd
+    spec:
+      containers:
+      - name: httpd
+        image: httpd:2.4.27
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 2
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpd-service
+  namespace: nautilus
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30008
+  selector:
+    app: httpd
