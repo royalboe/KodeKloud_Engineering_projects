@@ -9,24 +9,25 @@ kubectl get svc
 kubectl get deployment
 ```
 
-## Create the jenkins.yaml file and copy the content of [grafana.yaml](./grafana.yaml)
+## Create the tomcat.yaml file and copy the content of [tomcat.yaml](./tomcat.yaml)
 
 ```bash
-vi grafana.yaml
+vi tomcat.yaml
 ```
 
 ## Apply the declaration
 
 ```bash
-kubectl apply -f grafana.yaml
+kubectl apply -f tomcat.yaml -n tomcat-namespace-datacenter
 ```
 
 ## Check for running pods and deployments
 
 ```bash
-kubectl get pods
-kubectl get svc 
-kubectl get deployment
+kubectl get pods -n tomcat-namespace-datacenter
+kubectl get svc -n tomcat-namespace-datacenter
+kubectl get -n tomcat-namespace-datacenter
+
 ```
 
 ## Check if it works
