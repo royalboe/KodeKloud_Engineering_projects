@@ -1,4 +1,4 @@
-# Git Install Create Bare Repository
+# Git Install Create Repository
 
 ## Description
 
