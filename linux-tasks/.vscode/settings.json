@@ -1,3 +1,5 @@
 {
-	"circleci.persistedProjectSelection": []
+	"circleci.persistedProjectSelection": [
+		"gh/Royalboe/KodeKloud_Engineering_projects"
+	]
 }
