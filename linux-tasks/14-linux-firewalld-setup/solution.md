@@ -24,6 +24,14 @@ There are 9 preconfigured zones in firewalld from the most trusted to the least 
 
 For additional reading, check [Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-7) or [Linode](https://www.linode.com/docs/guides/introduction-to-firewalld-on-centos/).
 
+### Login in to the app servers
+
+```bash
+ssh tony@stapp01
+ssh steve@stapp02
+ssh banner@stapp03
+```
+
 ### Install firewalld
 
 ```bash
