@@ -18,7 +18,7 @@ sudo systemctl status postfix
 ## Check the postfix config file
 
 ```bash
-vi /etc/postfix/main.cf
+sudo vi /etc/postfix/main.cf
 ```
 
 ## Look for the line with localhost and comment it out or delete it
