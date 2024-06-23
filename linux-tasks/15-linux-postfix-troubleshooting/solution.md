@@ -7,9 +7,6 @@ ssh groot@stmail01
 ```
 
 ## Check the postfix
-sudo systemctl status postfix
-sudo systemctl status postfix
-```service
 
 ```bash
 sudo systemctl status postfix
