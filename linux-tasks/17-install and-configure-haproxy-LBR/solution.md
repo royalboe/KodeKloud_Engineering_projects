@@ -2,7 +2,7 @@
 
 ## HA Proxy
 
-HAProxy, which translates to High Availability Proxy, is a renowned open-source software that acts as a load balancer and proxy server for TCP and HTTP-based applications. It distributes the incoming traffic/workload across multiple web servers, enhancing performance and ensures that the web applications remain available even in the event of failure to one or more of the servers. This not only enhances the performance but also ensures that your web application remains available even if one or more servers fail.
+HAProxy, which translates to High Availability Proxy, is an open-source software that acts as a load balancer and proxy server for TCP and HTTP-based applications. It distributes the incoming traffic/workload across multiple web servers, enhancing performance and ensures that the web applications remain available even in the event of failure to one or more of the servers. This not only enhances the performance but also ensures that your web application remains available even if one or more servers fail.
 
 The important concepts under HAProxy are
 
