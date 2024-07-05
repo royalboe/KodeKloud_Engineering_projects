@@ -1,0 +1,8 @@
+- name: Ansible file
+  hosts: all
+  tasks:
+   - name: install the latest version of zip package
+     become: true
+     yum:
+      name: zip
+      state: latest
