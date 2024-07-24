@@ -1,0 +1,12 @@
+- name: Ansible file
+  hosts: all
+  become: yes
+  tasks:
+   - name: Compress directory /usr/src/devops/
+     community.general.archive:
+      path: /usr/src/devops/
+      dest: /opt/devops/ecommerce.tar.gz
+      format: gz
+      force_archive: true
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
