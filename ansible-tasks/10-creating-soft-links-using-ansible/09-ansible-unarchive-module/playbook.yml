@@ -1,0 +1,33 @@
+- name: Ansible file
+  hosts: all
+  become: yes
+  tasks:
+   - name: Create an empty file blog on stapp01
+     ansible.builtin.file:
+       path: /opt/data/blog.txt
+       state: touch
+       owner: "{{ ansible_user }}"
+       group: "{{ ansible_user }}"
+     when: inventory_hostname == "stapp01"
+
+   - name: Create an empty file story on stapp02
+     ansible.builtin.file:
+       path: /opt/data/story.txt
+       state: touch
+       owner: "{{ ansible_user }}"
+       group: "{{ ansible_user }}"
+     when: inventory_hostname == "stapp02"
+
+   - name: Create an empty file nedia on stapp03
+     ansible.builtin.file:
+       path: /opt/data/media.txt
+       state: touch
+       owner: "{{ ansible_user }}"
+       group: "{{ ansible_user }}"
+     when: inventory_hostname == "stapp03"
+    
+   - name: Create a symbolic link
+     ansible.builtin.file:
+        src: /opt/data
+        dest: /var/www/html
+        state: link
