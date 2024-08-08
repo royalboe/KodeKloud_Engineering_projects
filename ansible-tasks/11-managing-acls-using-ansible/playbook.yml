@@ -1,0 +1,51 @@
+- name: Ansible file
+  hosts: all
+  become: yes
+  tasks:
+    - name: Create an empty file blog on stapp01
+      ansible.builtin.file:
+        path: /opt/devops/blog.txt
+        state: touch
+        owner: root
+      when: inventory_hostname == "stapp01"
+
+    - name: Grant user Tiny read access to a file
+      ansible.posix.acl:
+        path: /opt/devops/blog.txt
+        entity: "{{ ansible_user }}"
+        etype: group
+        permissions: r
+        state: present
+      when: inventory_hostname == "stapp01"
+
+    - name: Create an empty file story on stapp02
+      ansible.builtin.file:
+        path: /opt/devops/story.txt
+        state: touch
+        owner: root
+      when: inventory_hostname == "stapp02"
+
+    - name: Grant user Steve read access to a file
+      ansible.posix.acl:
+        path: /opt/devops/story.txt
+        entity: "{{ ansible_user }}"
+        etype: user
+        permissions: rw
+        state: present
+      when: inventory_hostname == "stapp02"
+
+    - name: Create an empty file media on stapp03
+      ansible.builtin.file:
+        path: /opt/devops/media.txt
+        state: touch
+        owner: root
+      when: inventory_hostname == "stapp03"
+
+    - name: Grant user Banner read access to a file
+      ansible.posix.acl:
+        path: /opt/devops/media.txt
+        entity: "{{ ansible_user }}"
+        etype: group
+        permissions: rw
+        state: present
+      when: inventory_hostname == "stapp03"
