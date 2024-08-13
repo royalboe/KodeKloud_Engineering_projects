@@ -1,0 +1,13 @@
+- name: Ansible file
+  hosts: all
+  become: yes
+  tasks:
+    - name: Installing vsftpd
+      ansible.builtin.yum:
+        name: vsftpd
+        state: present
+    - name: Enable and start service vsftpd
+      ansible.builtin.service:
+        name: vsftpd
+        state: started
+        enabled: true
