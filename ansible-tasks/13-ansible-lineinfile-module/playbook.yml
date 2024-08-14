@@ -1,0 +1,35 @@
+- name: Ansible file
+  hosts: all
+  become: yes
+  tasks:
+    - name: Installing httpd
+      ansible.builtin.yum:
+        name: httpd
+        state: present
+    - name: Enable and start service httpd
+      ansible.builtin.service:
+        name: httpd
+        state: started
+        enabled: true
+    - name: Creating a file and inserting a line
+      ansible.builtin.lineinfile:
+        path: var/www/html/index.html
+        owner: apache
+        group: apaches
+        line: 'This is a Nautilus sample file, created using Ansible!'
+        create: yes
+        mode: 0644
+    - name: Inserting a line above the first test
+      ansible.builtin.lineinfile:
+        path: var/www/html/index.html
+        # insertbefore: BOF
+        # searchstring: 'This is a Nautilus sample file, created using Ansible!'
+        insertbefore: '^This is a Nautilus sample file, created using Ansible!'
+        line: 'Welcome to xFusionCorp Industries'
+
+    # - name: Set the file permissions and owner to 'apache'
+    #   ansible.builtin.file:
+    #     path: /var/www/html/index.html
+    #     owner: apache
+    #     group: apache
+    #     mode: "0644"
