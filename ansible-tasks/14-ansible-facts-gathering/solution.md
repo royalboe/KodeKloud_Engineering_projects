@@ -3,11 +3,11 @@
 ## Create the playbook file
 
 ```bash
-touch inventory playbook.yml
+touch playbooks/index.yml
 ```
 
 ### Run the playbook
 
 ```bash
-ansible-playbook -i inventory playbook.yml
+ansible-playbook -i inventory index.yml
 ```
