@@ -1,0 +1,30 @@
+---
+- name: Configure webservers
+  hosts: stapp01, stapp02, stapp03
+
+  gather_facts: true
+  become: yes
+
+  tasks:
+
+    - name: create a  file using blockinfile
+      blockinfile:
+        create: yes
+        path: /root/facts.txt
+        block: |
+          Ansible managed node architecture is {{ ansible_architecture }}
+
+    - name: Install Apache hpptd package
+      package:
+        name: httpd
+        state: present
+
+    - name: Copy of facts.txt to /var/www/html/index.html
+      command: cp /root/facts.txt /var/www/html/index.html
+      # shell: cp /root/facts.txt /var/www/html/index.html
+
+    - name: ensure httpd is running
+      systemd:
+        name: httpd
+        state: restarted
+        enabled: yes
