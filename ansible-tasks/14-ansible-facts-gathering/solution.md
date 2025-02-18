@@ -1,6 +1,6 @@
 # Solution
 
-## Create the playbook file
+## Create the playbook file and copy contents of index.yml
 
 ```bash
 touch playbooks/index.yml
