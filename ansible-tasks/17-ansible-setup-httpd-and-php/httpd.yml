@@ -1,0 +1,25 @@
+---
+- hosts: stapp01
+  become: yes
+  become_user: root
+  
+  tasks:
+  - name: Install httpd
+    package:
+      name: 
+        - httpd
+        - php
+      state: latest
+      update_cache: yes
+
+  - Replace default DocumentRoot
+    replace:
+      path: /etc/httpd/conf/httpd.conf
+      regexp: 'DocumentRoot "/var/www/html"'
+      replace: 'DocumentRoot "/var/www/html/wordpress"'
+
+  - name: Start httpd
+    service:
+      name: httpd
+      state: started
+      enabled: yes
