@@ -1,0 +1,32 @@
+---
+- hosts: all
+  become: yes
+  become_user: root
+  
+  tasks:
+    - name: Copy blog.txt from /usr/src/dba to server 1 under /opt/dba
+      copy:
+        src: /usr/src/dba/blog.txt
+        dest: /opt/dba/blog.txt
+        owner: tony
+        group: tony
+        mode: '0755'
+      when: ansible_hostname == 'stapp01'
+
+    - name: Copy story.txt from /usr/src/dba to server 2 under /opt/dba
+      copy:
+        src: /usr/src/dba/story.txt
+        dest: /opt/dba/story.txt
+        owner: steve
+        group: steve
+        mode: '0755'
+      when: ansible_hostname == 'stapp02'
+
+    - name: Copy media.txt from /usr/src/dba to server 3 under /opt/dba
+      copy:
+        src: /usr/src/dba/media.txt
+        dest: /opt/dba/media.txt
+        owner: banner
+        group: banner
+        mode: '0755'
+      when: ansible_hostname == 'stapp03'
