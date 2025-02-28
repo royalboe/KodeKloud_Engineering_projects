@@ -36,4 +36,10 @@ vi deployment.yaml
 kubectl create -f deployment.yaml
 ```
 
+## Get pods running under the namespace
+
+```bash
+kubectl get all -n httpd-namespace-nautilus
+```
+
 ## Run the app now
