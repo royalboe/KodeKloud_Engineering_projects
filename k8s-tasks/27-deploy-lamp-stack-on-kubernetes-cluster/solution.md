@@ -39,7 +39,7 @@ kubectl create -f deployment.yaml
 vi services.yaml
 ```
 
-## Create services
+## Deploy the services
 
 ```bash
 kubectl create -f services.yaml
