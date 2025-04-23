@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drupal-mysql-deployment
+  labels:
+    app: drupal-mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: drupal-mysql
+  template:
+    metadata:
+      labels:
+        app: drupal-mysql
+    spec:
+      volumes:
+        - name: drupal-mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: drupal-mysql-pvc
+      containers:
+      - name: drupal-mysql
+        image: mysql:5.7
+        volumeMounts:
+          - mountPath: /var/lib/mysql
+            name: drupal-mysql-persistent-storage
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: root_password
+          - name: MYSQL_DATABASE
+            value: drupal-database
+      
+        ports:
+        - containerPort: 3306
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drupal
+  labels:
+    app: drupal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: drupal
+  template:
+    metadata:
+      labels:
+        app: drupal
+    spec:
+      containers:
+      - name: drupal
+        image: drupal:8.6
+        ports:
+        - containerPort: 80
